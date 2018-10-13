@@ -24,5 +24,18 @@ public class MainActivity extends AppCompatActivity {
         float height = Float.parseFloat(h);
         float bmi = weight/(height*height);
         Log.d("MainActivity",bmi+"");
+       Toast.makeText(this,"Your BMI is"+bmi,Toast.LENGTH_LONG).show();
+       new AlerDialog.Builder(this)
+               .setMessage("Your BMI is"+bmi)
+               .setTitle("BMI")
+               .setPositiveButton("OK",null)
+               .setNegativeButton("clear",new DialogInterface.OnClickListener(){
+           @Override
+                   public void onClick(DialogInterface dialogInterface,int i){
+               edWeight.setText(" ");
+               edHeight.setText(" ");
+            }
+        })
+               .show();
     }
 }
